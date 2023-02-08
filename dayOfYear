@@ -1,0 +1,60 @@
+## Finding day of year
+from datetime import datetime, date
+
+def _day_of_week(d):
+    if d == 0:
+      return "Sunday"
+    elif d == 1:
+      return "Monday"
+    elif d == 2:
+      return "Tuesday"
+    elif d == 3:
+      return "Wednesday"
+    elif d == 4:
+      return "Thursday"
+    elif d == 5:
+      return "Friday"
+    elif d == 1:
+      return "Saturday"
+    else: 
+      "What did you enter?!"
+    
+def _is_leap_year(y):
+    if (y%4 == 0 and y%100 != 0) or (y%400 == 0) :
+      return True
+    else :
+      return False
+ 
+# Current date
+#day_of_year = datetime.now().timetuple().tm_yday
+#print("\nDay of year: ", day_of_year, "\n")
+ 
+# Specific date
+#day_of_year = date(2007, 12, 31).timetuple().tm_yday
+#print("Day of year: ", day_of_year, "\n")
+
+print('Enter a 4 digit year:')
+y = int(input())
+
+print('And a 2 digit month:')
+m = int(input())
+
+print('And an integer day, preferably in the month you entered:')
+d = int(input())
+
+#datetime_str = y + '/' + m + '/' + d
+#print(datetime_str)
+#datetime_object = datetime.strptime(datetime_str, '%Y/%m/%d')
+#print(datetime_object)
+
+# Specific date
+#day_of_year = date(y, m, d).timetuple().tm_yday
+print("Day of year: ", date(y, m, d).timetuple().tm_yday, "\n")
+wday = _day_of_week(date(y, m, d).timetuple().tm_wday)
+print("Which happens to be a ", wday, "\n")
+leapyear = _is_leap_year(y)
+
+if leapyear:
+    print(f"{y} is a leap year!")
+else:
+    print(f"{y} is not a leap year!")
